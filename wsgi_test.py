@@ -1,17 +1,23 @@
 from wsgiref.simple_server import make_server
-import urlparse
+from wsgiref.util import setup_testing_defaults
+from urllib.parse import parse_qs
 
-def wsgi_stepic19_app(environ, start_response):
-   qs = environ['QUERY_STRING']
-   output = qs.replace('&','\n')
-   start_response("200 OK", [
-            ("Content-Type", "text/plain"),
-            ("Content-Length", str(len(output)))
-        ])
-   return iter([output])
 
-httpd = make_server('', 8000, wsgi_stepic19_app)
-print "Serving HTTP on port 8000..."
+def simple_app(environ, start_response):
+    #    setup_testing_defaults(environ)
+
+    status = '200 OK'
+    headers = [('Content-type', 'text/plain; charset=utf-8')]
+
+    start_response(status, headers)
+
+    qs = environ.get('QUERY_STRING')
+    ret = [("%s=%s\n" % (key, value[0])).encode("utf-8")
+           for key, value in parse_qs(qs).items()]
+    return ret
+
+httpd = make_server('', 8000, simple_app)
+print("Serving HTTP on port 8000...")
 
 # Respond to requests until process is killed
 httpd.handle_request()
