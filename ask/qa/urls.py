@@ -17,6 +17,6 @@ from django.conf.urls import url
 from qa.views import *
 
 urlpatterns = [
-    url(r'^$', http_resp_404, name='question_root'),
+    url(r'^$', http_resp_200, name='question_root'),
     url(r'^\d+/', http_resp_200, name='question_id'),
 ]
