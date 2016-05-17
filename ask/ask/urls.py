@@ -18,7 +18,7 @@ from django.contrib import admin
 from qa.views import *
 
 urlpatterns = [
-    url(r'^$', http_resp_404, name='root'),
+    url(r'^$', http_resp_200, name='root'),
     url(r'^login/', http_resp_404, name='login_root'),
     url(r'^signup/', http_resp_404, name='signup_root'),
     url(r'^question/', include('qa.urls')),
