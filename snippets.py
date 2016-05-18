@@ -7,16 +7,20 @@ except ImportError:
     pass
 
 # Получение GET и POST параметров
-order = request.GET['sort'] # опасно! Выдаст исключение, если нет значения с ключом page
+# опасно! Выдаст исключение, если нет значения с ключом page
+order = request.GET['sort']
 if order == 'rating':
-    queryset = queryset.order_by('rating')  # Проверка, что передано валдное значение
-page = request.GET.get('page') or 1 # Не выдаст эксепшн, если нет значения с ключом page, а вернет None
+    # Проверка, что передано валдное значение
+    queryset = queryset.order_by('rating')
+# Не выдаст эксепшн, если нет значения с ключом page, а вернет None
+page = request.GET.get('page') or 1
 try:
     page = int(page)    # Проверка, что передано число, если нет - BadRequest
 except ValueError:
     return HttpResponseBadRequest()
 
-# Находит директорию проекта, которая устанавливается в BASE_DIR переменную. От неё считаем все пути
+# Находит директорию проекта, которая устанавливается в BASE_DIR
+# переменную. От неё считаем все пути
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
