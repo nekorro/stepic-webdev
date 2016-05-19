@@ -6,14 +6,14 @@ from django.contrib.auth.models import User
 class Question(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField()
-    added_at = models.DateTimeField()
-    rating = models.IntegerField()
-    author = models.ForeignKey(User, on_delete=models.SET_NULL)
-    likes = models.ManyToManyField(User)
+    added_at = models.DateTimeField(null=True)
+    rating = models.IntegerField(null=True)
+    author = models.ForeignKey(User, related_name='question_author', on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='liked_by', null=True)
 
 
 class Answer(models.Model):
     text = models.TextField()
-    added_at = models.DateTimeField()
+    added_at = models.DateTimeField(null=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    author = models.ForeignKey(User, on_delete=models.SET_NULL)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
