@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^ask/', http_resp_200, name='ask_root'),
     url(r'^popular/', http_resp_200, name='popular_root'),
     url(r'^new/', http_resp_200, name='new_root'),
+    url(r'^test/', test_model, name='test_model'),
     url(r'^admin/', admin.site.urls),
 ]
