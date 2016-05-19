@@ -22,7 +22,7 @@ def test_template(request, *args, **kwargs):
 
 
 def test_model(request, *args, **kwargs):
-    user = User(username='s', password='s')
+    user = User(username='o', password='o')
     user.save()
     question = Question(title='qwe', text='qwe', author=user)
     question.save()

@@ -9,7 +9,7 @@ class Question(models.Model):
     added_at = models.DateTimeField(null=True)
     rating = models.IntegerField(null=True)
     author = models.ForeignKey(User, related_name='question_author', on_delete=models.CASCADE)
-    likes = models.ManyToManyField(User, related_name='liked_by', null=True)
+    likes = models.ManyToManyField(User, related_name='liked_by')
 
 
 class Answer(models.Model):
