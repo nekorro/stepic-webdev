@@ -38,7 +38,7 @@ def home_page(request, *args, **kwargs):
     questions = Question.objects.get_new()
     paginator, page = paginate(request, questions)
     paginator.baseurl = reverse('home')
-    return render(request, 'qa\question_list.html', {
+    return render(request, 'qa/question_list.html', {
         'questions': page.object_list,
         'paginator': paginator,
         'page': page,
@@ -50,7 +50,7 @@ def popular_questions_page(request, *args, **kwargs):
     questions = Question.objects.get_popular()
     paginator, page = paginate(request, questions)
     paginator.baseurl = reverse('popular')
-    return render(request, 'qa\question_list.html', {
+    return render(request, 'qa/question_list.html', {
         'questions': page.object_list,
         'paginator': paginator,
         'page': page,
@@ -60,7 +60,7 @@ def popular_questions_page(request, *args, **kwargs):
 @require_GET
 def question_details_page(request, *args, **kwargs):
     question = get_object_or_404(Question, id=kwargs['id'])
-    return render(request, 'qa\question_details.html', {
+    return render(request, 'qa/question_details.html', {
         'question': question,
         'answers': question.answer_set.all()[:],
         })
