@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	Question list
+</title>
+	
+</head>
+<body>
+	<h1>
+	<div>Total number of questions 0</div>
+</h1>
+	
+
+
+<nav><ul class="pagination">
+	
+		
+		<li>
+		
+			<a href="/">
+				
+			</a>
+		</li>
+	
+</ul></nav>
+
+
+</body>
+</html>
