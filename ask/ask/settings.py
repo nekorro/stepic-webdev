@@ -80,14 +80,14 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'stepic',
+        'NAME': 'stepic_db.sqlite3',
     },
-    'mysql': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'stepic',
-        'USER': 'django_stepic',
-        'PASSWORD': 'django_stepic',
-    }
+    # 'mysql': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'stepic',
+    #     'USER': 'django_stepic',
+    #     'PASSWORD': 'django_stepic',
+    # }
 }
 
 

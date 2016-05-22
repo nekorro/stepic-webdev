@@ -1,0 +1,25 @@
+{% extends "qa\base.html" %}
+
+
+{% block title %}
+	Question {{ question }}
+{% endblock %}
+
+
+{% block pagename %}
+	<div>Question number {{ question.id }}</div>
+{% endblock %}
+
+
+{% block content %}
+	<div><h2>{{ question }}</h2></div>
+	<div>{{ question.text }}</div>
+
+{% for answer in answers %}
+	<div>
+		<p>{{ answer }}</p>
+		<p>{{ answer.text }}</p>
+		<p>{{ answer.author }}, {{ answer.added_at }}</p>
+	</div>
+{% endfor %}
+{% endblock %}

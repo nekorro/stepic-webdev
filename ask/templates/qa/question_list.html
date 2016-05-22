@@ -1,0 +1,22 @@
+{% extends "qa\base.html" %}
+
+
+{% block title %}
+	Question list
+{% endblock %}
+
+
+{% block pagename %}
+	<div>Total number of questions {{ paginator.count }}</div>
+{% endblock %}
+
+
+{% block content %}
+{% for question in questions %}
+	<div class="question">
+		<a href="{{ question.get_url }}">{{ question }}</a>
+	</div>
+{% endfor %}
+
+{% include "qa\pagination.html" %}
+{% endblock %}
